@@ -1,0 +1,70 @@
+/* Example tokeninput style #1: Token vertical list*/
+.a2{font-weight: 600;
+    color: #000000;
+}
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.dataTable td {
+    background: #333333;
+    border: 1px black solid;
+}
+
+.dataTable .tdLabel {
+    color: #ffffff;
+    text-align: center;
+
+}
+
+.dataTable .tdLabel1 {
+    text-align: center;
+    padding-left: 5px;
+}
+
+.dataTable .tdData {
+    background: #ffffff;
+    color: black;
+    text-align: center;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.tbTitle {
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    font-size: 12px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0");
+    background: linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+
+.dataTable .tb_top td {
+    background-color: #E0E0E0;
+}
+
+.dataTable .tb_mid td {
+    background: #ffffff;
+}
+
+.fuck {
+    vertical-align: top;
+}
+
+a.xyj:link,a.xyj:visited {
+    text-decoration:none;
+    font-size:12px;
+    color:#226;
+}
+a.xyj:visited {
+    color:#a21;
+}
+a.xyj:hover {
+    color:#191;
+    text-decoration:underline;
+}

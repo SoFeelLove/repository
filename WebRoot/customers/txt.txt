@@ -1,0 +1,98 @@
+
+刚刚看到同学在之前发的文章，在使用Easyui DataGrid时遇到新增行数据在保存时不能获取的问题，
+解决方法是在保存时先执行$(‘#example′).datagrid(‘acceptChanges’);
+然后前台获取全部行，再拼装字符串传到后台，这样做是可以解决，但实际上Easyui Datagrid似乎有更好的API供调用。
+为了和我一样的新手少走弯路，故写此篇文章以便参考。
+
+例子如下：
+
+<table id="example"></table>
+<script type="text/javascript">
+easyloader.locale = "zh_CN";
+easyloader.theme = "gray";
+using(['datagrid'], function () {
+//new Datagrid的代码写在这里，下面是Datagrid中相应按钮调用的方法，是根据官方demo复制过来的。这里推荐使用easyloader，因为他是easyui实现的动态加载模块，个人认为会比一个个引入好点。
+});
+ 
+var editIndex = undefined;//标示当前编辑行，提高效率，避免使用each遍历所有行来关闭正在编辑的行。
+function endEditing(){
+    if (editIndex == undefined){return true;}
+    if ($('#example').datagrid('validateRow', editIndex)){
+        var ed = $('#example').datagrid('getEditor', {index:editIndex,field:'productid'});
+        var productname = $(ed.target).combobox('getText');
+        $('#example').datagrid('getRows')[editIndex]['productname'] = productname;
+        $('#example').datagrid('endEdit', editIndex);
+        editIndex = undefined;
+        return true;
+    } else {
+        return false;
+    }
+}
+ 
+function onClickRow(index){
+    if (editIndex != index){
+        if (endEditing()){
+            $('#example').datagrid('selectRow', index).datagrid('beginEdit', index);
+            editIndex = index;
+        } else {
+            $('#example').datagrid('selectRow', editIndex);
+        }
+    }
+}
+ 
+function append(){
+    if (endEditing()){
+        $('#example').datagrid('appendRow',{status:'P'});
+        editIndex = $('#example').datagrid('getRows').length-1;
+        $('#example').datagrid('selectRow', editIndex).datagrid('beginEdit', editIndex);
+    }
+}
+ 
+function remove(){
+    if (editIndex == undefined){return}
+    $('#example').datagrid('cancelEdit', editIndex).datagrid('deleteRow', editIndex);
+    editIndex = undefined;
+}
+ 
+function accept(){
+    if (endEditing()){
+        var inserted = $dg.datagrid('getChanges', "inserted");
+        var deleted = $dg.datagrid('getChanges', "deleted");
+        var updated = $dg.datagrid('getChanges', "updated");
+        var effectRow = new Object();
+        if (inserted.length) {
+                effectRow["inserted"] = JSON.stringify(inserted);
+        }
+        if (deleted.length) {
+                effectRow["deleted"] = JSON.stringify(deleted);
+        }
+        if (updated.length) {
+                effectRow["updated"] = JSON.stringify(updated);
+        }
+        $.post("commit", effectRow, function(response) {
+                if(response.status){
+                $("#example").datagrid('acceptChanges');
+                }
+        }, "JSON");
+    }
+}
+ 
+function reject(){
+    $('#example').datagrid('rejectChanges');
+    editIndex = undefined;
+}
+ 
+function getChanges(){
+    var rows = $('#example').datagrid('getChanges');
+    console.log(rows);    
+}
+</script>
+如上所示，在保存时，其实可以根据新增、修改、删除，三种状态来区分具体数据，而在保存之前需要调用endEdit，所以文章一开始说的问题就很明显了，不是直接acceptChanges而是要先endEdit，之后就能拿到新插入的数据了。
+而提交的时候可以使用JSON.stringify(object);得到json字符串后提交，后面就是使用ajax请求传递字串给后台了。
+这里要说一下，使用这个JSON.stringify的时候，我在IE下面有点问题，不知道是不是我使用easyloader的问题，时间关系，我没深究，因为我们使用的Liferay本身集成有AUI(其实就是YUI的扩展),
+我就直接调用A.JSON.stringify了，如果大家在使用的时候有遇到问题，可以找其他object to json的转换方式，同时也欢迎大家转告给我，以便整理出更简明、完善的例子。
+
+下面简单说明一下后台获取方式，因为前台提交时用的是对象，里面最多也就三个元素，分别为inserted、deleted、updated，
+所以在后台直接通过request直接get就能得到String型的json数组。
+我的方式是把数组直接转换为List<String,Map<String,String>>转换的话就是要json.simple的JSONParser。
+如果需要直接转换bean或者其他的话可以根据自己的思路转换，这里只说明自己的简单实现。毕竟现在不用了，没研究那么多。

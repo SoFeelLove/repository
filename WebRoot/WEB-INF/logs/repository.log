@@ -1,0 +1,275 @@
+2016-06-04 22:53:16,053 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization started
+2016-06-04 22:53:16,205 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Refreshing Root WebApplicationContext: startup date [Sat Jun 04 22:53:16 CST 2016]; root of context hierarchy
+2016-06-04 22:53:16,335 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2016-06-04 22:53:16,769 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:53:17,309 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:53:17,832 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4de3674: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 22:53:17,840 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [ERROR] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to load bean class: com.lxf.repository.action.customers.CustomersMgrAction; nested exception is java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:293)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:227)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:623)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:454)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:383)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:283)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:111)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:5017)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5531)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:901)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:877)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1809)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:618)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:565)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1487)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:97)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1328)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1420)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:848)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:322)
+	at sun.rmi.transport.Transport$1.run(Transport.java:177)
+	at sun.rmi.transport.Transport$1.run(Transport.java:174)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:173)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:556)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:811)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:670)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:157)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:80)
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:101)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:76)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:256)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:148)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:125)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:289)
+	... 49 more
+2016-06-04 22:54:38,798 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization started
+2016-06-04 22:54:38,979 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Refreshing Root WebApplicationContext: startup date [Sat Jun 04 22:54:38 CST 2016]; root of context hierarchy
+2016-06-04 22:54:39,124 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2016-06-04 22:54:39,396 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:54:39,603 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:54:40,077 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2692dfbe: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 22:54:40,080 [RMI TCP Connection(5)-127.0.0.1] [org.springframework.web.context.ContextLoader] [ERROR] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to load bean class: com.lxf.repository.action.customers.CustomersMgrAction; nested exception is java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:293)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:227)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:623)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:454)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:383)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:283)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:111)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:5017)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5531)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:901)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:877)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1809)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:618)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:565)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1487)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:97)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1328)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1420)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:848)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:322)
+	at sun.rmi.transport.Transport$1.run(Transport.java:177)
+	at sun.rmi.transport.Transport$1.run(Transport.java:174)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:173)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:556)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:811)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:670)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:157)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:80)
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:101)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:76)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:256)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:148)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:125)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:289)
+	... 49 more
+2016-06-04 22:56:39,513 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization started
+2016-06-04 22:56:39,686 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Refreshing Root WebApplicationContext: startup date [Sat Jun 04 22:56:39 CST 2016]; root of context hierarchy
+2016-06-04 22:56:39,834 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2016-06-04 22:56:40,124 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:56:40,321 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:56:40,823 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@774fe507: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 22:56:40,826 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [ERROR] - Context initialization failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to load bean class: com.lxf.repository.action.customers.CustomersMgrAction; nested exception is java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:293)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:227)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:623)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:454)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:383)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:283)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:111)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:5017)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5531)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:901)
+	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:877)
+	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)
+	at org.apache.catalina.startup.HostConfig.manageApp(HostConfig.java:1809)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:618)
+	at org.apache.catalina.mbeans.MBeanFactory.createStandardContext(MBeanFactory.java:565)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.apache.tomcat.util.modeler.BaseModelMBean.invoke(BaseModelMBean.java:301)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:819)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:801)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1487)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$300(RMIConnectionImpl.java:97)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1328)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1420)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:848)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:322)
+	at sun.rmi.transport.Transport$1.run(Transport.java:177)
+	at sun.rmi.transport.Transport$1.run(Transport.java:174)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:173)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:556)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:811)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:670)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+Caused by: java.io.FileNotFoundException: class path resource [com/opensymphony/xwork2/ActionSupport.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:157)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:80)
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:101)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:76)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:256)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:148)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:125)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:289)
+	... 49 more
+2016-06-04 22:59:23,553 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization started
+2016-06-04 22:59:23,737 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Refreshing Root WebApplicationContext: startup date [Sat Jun 04 22:59:23 CST 2016]; root of context hierarchy
+2016-06-04 22:59:23,870 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2016-06-04 22:59:24,106 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:59:24,283 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 22:59:24,901 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer] [INFO] - Loading properties file from class path resource [jdbc.properties]
+2016-06-04 22:59:24,989 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee750e8: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 22:59:25,567 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization completed in 2013 ms
+2016-06-04 22:59:26,109 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts-default.xml]
+2016-06-04 22:59:26,323 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts-plugin.xml]
+2016-06-04 22:59:26,372 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts.xml]
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.FileManager)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2016-06-04 22:59:26,377 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2016-06-04 22:59:26,379 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2016-06-04 22:59:26,379 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2016-06-04 22:59:26,379 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2016-06-04 22:59:26,379 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2016-06-04 22:59:26,380 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2016-06-04 22:59:26,380 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2016-06-04 22:59:26,380 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2016-06-04 22:59:26,380 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2016-06-04 22:59:26,380 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2016-06-04 22:59:26,407 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.spring.StrutsSpringObjectFactory] [INFO] - Initializing Struts-Spring integration...
+2016-06-04 22:59:26,407 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.spring.SpringObjectFactory] [INFO] - Setting autowire strategy to name
+2016-06-04 22:59:26,407 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.spring.StrutsSpringObjectFactory] [INFO] - ... initialized Struts-Spring integration successfully
+2016-06-04 23:03:58,773 [localhost-startStop-2] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Closing Root WebApplicationContext: startup date [Sat Jun 04 22:59:23 CST 2016]; root of context hierarchy
+2016-06-04 23:03:58,774 [localhost-startStop-2] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6ee750e8: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 23:04:10,515 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization started
+2016-06-04 23:04:10,673 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.support.XmlWebApplicationContext] [INFO] - Refreshing Root WebApplicationContext: startup date [Sat Jun 04 23:04:10 CST 2016]; root of context hierarchy
+2016-06-04 23:04:10,805 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2016-06-04 23:04:11,069 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 23:04:11,255 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.context.annotation.ClassPathBeanDefinitionScanner] [INFO] - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+2016-06-04 23:04:11,799 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer] [INFO] - Loading properties file from class path resource [jdbc.properties]
+2016-06-04 23:04:11,903 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.beans.factory.support.DefaultListableBeanFactory] [INFO] - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5856cf4c: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,commonMapper,/customers/customersMgrAction,/customers/orderSaleMgrAction,/customers/ordersMgrAction,/products/productsMgrAction,/user/loginMgrAction,shipmentBean,customersMgrService,orderMgrService,orderSaleMgrService,ordersMgrService,productsMgrService,loginMgrService,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,jdbcTemplate,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+2016-06-04 23:04:12,613 [RMI TCP Connection(3)-127.0.0.1] [org.springframework.web.context.ContextLoader] [INFO] - Root WebApplicationContext: initialization completed in 2097 ms
+2016-06-04 23:04:12,960 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts-default.xml]
+2016-06-04 23:04:13,068 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts-plugin.xml]
+2016-06-04 23:04:13,111 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.config.providers.XmlConfigurationProvider] [INFO] - Parsing configuration file [struts.xml]
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.FileManager)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+2016-06-04 23:04:13,116 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+2016-06-04 23:04:13,117 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+2016-06-04 23:04:13,117 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+2016-06-04 23:04:13,119 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+2016-06-04 23:04:13,120 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.config.BeanSelectionProvider] [INFO] - Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+2016-06-04 23:04:13,145 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.spring.StrutsSpringObjectFactory] [INFO] - Initializing Struts-Spring integration...
+2016-06-04 23:04:13,145 [RMI TCP Connection(3)-127.0.0.1] [com.opensymphony.xwork2.spring.SpringObjectFactory] [INFO] - Setting autowire strategy to name
+2016-06-04 23:04:13,145 [RMI TCP Connection(3)-127.0.0.1] [org.apache.struts2.spring.StrutsSpringObjectFactory] [INFO] - ... initialized Struts-Spring integration successfully
+2016-06-04 23:05:23,240 [http-bio-8080-exec-1] [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] [INFO] - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2016-06-04 23:05:23,315 [http-bio-8080-exec-1] [org.springframework.jdbc.support.SQLErrorCodesFactory] [INFO] - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]

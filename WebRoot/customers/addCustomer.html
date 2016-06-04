@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>Row Editing in DataGrid - jQuery EasyUI Demo</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../css/demo.css">
+<script type="text/javascript" src="../js/easyui1.4.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="../js/easyui1.4.3/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../main/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../main/js/myJs.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#s_name').textbox({
+			required : true
+		});
+		$('#s_contact,#s_tel,#s_address').textbox({});
+		$('#s_tel').numberbox({});
+		$('#s_other').textbox({
+			multiline : true
+		});
+	});
+	function clearForm() {
+		$('#ff').form('clear');
+	}
+</script>
+</head>
+<body style="background: #EAF1FA;font-size: 12px;">
+	<div class="easyui-panel" >
+	<form id="ff" method="post">
+			<table cellpadding="5" style="margin:0px auto;">
+				<tr>
+					<td>客户名称:</td>
+					<td><input style="width:160px" name="customer.customer_name"
+						id="s_name" /></td>
+				</tr>
+				<tr>
+					<td>联系人:</td>
+					<td><input style="width:160px" name="customer.customer_contact"
+						id="s_contact" /></td>
+				</tr>
+				<tr>
+					<td>联系方式:</td>
+					<td><input style="width:160px" name="customer.customer_tel"
+						id="s_tel" /></td>
+				</tr>
+				<tr>
+					<td>地址:</td>
+					<td><input style="width:160px" name="customer.customer_address"
+						id="s_address" /></td>
+				</tr>
+				<tr>
+					<td>备注:</td>
+					<td><input style="width:160px;height:160px;"
+						name="customer.customer_other" id="s_other" /></td>
+				</tr>
+
+			</table>
+			</form>
+			<div style="text-align:center;padding:5px">
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					iconcls="icon-save"
+					onclick="javascript:sumbitForm('customersMgr!addCustomer.action');">确定</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					iconcls="icon-clear" onclick="clearForm()">重置</a>
+			</div>
+	</div>
+</body>
+</html>

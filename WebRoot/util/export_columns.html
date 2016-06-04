@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>modal.html</title>
+<base target="_self">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+body {
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+</style>
+
+<script type="text/javascript">
+var _excel_export_obj = null;
+function initPageData(){
+	var _config;
+	_excel_export_obj = top.getParentWin()._excel_export;
+	_config = _excel_export_obj.paramConfig._column_config_search;
+	var oOp;
+	var op = document.getElementById('selectedFiled');
+	var childNodes = op.childNodes;
+	for(var i = 0; i < childNodes.length; i++){
+		op.removeChild(childNodes[i]);
+	}
+	for(var i = 0; i < _config.length; i++){
+		oOp = document.createElement('option');
+		oOp.setAttribute('value',_config[i].name);
+		oOp.appendChild(document.createTextNode(_config[i].text));
+		op.appendChild(oOp);
+	}
+}
+
+
+function combination_sql(){
+	var op = document.getElementById('selectedFiled');
+	var opList = op.childNodes;
+	if(opList.length ==0){
+		alert('请选择数据!');
+		return;
+	}
+	var strSql = "select ";
+	var strField = "";//中文字段名
+	var strEnField = "";//英文字段名
+	for(var i = 0; i < opList.length; i++){
+		strSql += opList[i].getAttribute('value') + ',';
+		strEnField += opList[i].getAttribute('value') + ',';
+		strField += opList[i].firstChild.data + ',';
+	}
+	strEnField = strEnField.substring(0,strEnField.length - 1);
+	strSql = strSql.substring(0,strSql.length - 1);
+	strField = strField.substring(0,strField.length - 1);
+	
+	if(_excel_export_obj._excel_export_type == 'js'){
+		strSql += " from " + _excel_export_obj.paramConfig.table_name + " where 1=1 ";
+		strSql += _excel_export_obj.generatorSearchConditionSql();
+		var order_ =  _excel_export_obj.paramConfig._order;
+		for(var i = 0; i < order_.length; i++){
+			strSql += " order by " + order_[i].filed + " " + order_[i].type + ',';
+		}		
+	}
+	if(strSql.substring(strSql.length - 1,strSql.length) == ','){
+		strSql = strSql.substring(0,strSql.length - 1);
+	}
+	var reObj = {sql:strSql,strEnField:strEnField,strCnField:strField};
+	top.getParentWin().callFun_({
+		param:reObj
+	});
+	top.stackModelOper(false);
+}
+function addField(){
+	var of = document.getElementById('optionFiled');
+	var op = document.getElementById('selectedFiled');
+	var slO = of.childNodes;
+	var delNode = [];
+	for(var i = 0; i < slO.length; i++){
+		var tempO = slO[i];
+		if(tempO.selected){
+			delNode.push(tempO);
+		}
+	}
+	for(var i = 0; i < delNode.length; i++){
+		of.removeChild(delNode[i]);
+		var temp = document.createElement('option');
+		temp.setAttribute('value',delNode[i].getAttribute('value'));
+		temp.appendChild(document.createTextNode(delNode[i].firstChild.data));
+		op.appendChild(temp);
+	}
+}
+function delField(){
+	var of = document.getElementById('optionFiled');
+	var op = document.getElementById('selectedFiled');
+	var slO = op.childNodes;
+	var delNode = [];
+	for(var i = 0; i < slO.length; i++){
+		var tempO = slO[i];
+		if(tempO.selected){
+			delNode.push(tempO);
+		}
+	}
+	for(var i = 0; i < delNode.length; i++){
+		op.removeChild(delNode[i]);
+		var temp = document.createElement('option');
+		temp.setAttribute('value',delNode[i].getAttribute('value'));
+		temp.appendChild(document.createTextNode(delNode[i].firstChild.data));
+		of.appendChild(temp);
+	}
+}
+
+</script>
+</head>
+
+<body style="text-align: center;" onload="initPageData()">
+<table width="70%" border="0" cellpadding="0" cellspacing="0" class="margin" height="100%">
+	<tr>
+		<td valign="top">
+			未选数据
+		</td>
+		<td width="20">
+		</td>
+		<td valign="top">
+			已选数据
+		</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			<select id="optionFiled" multiple="multiple" style="height: 300px;width: 200px;">
+			</select>
+		</td>
+		<td width="20">
+			<input type="button" onclick="addField()" value="&gt;&gt;"/><br/>
+			<input type="button" onclick="delField()" value="&lt;&lt;"/>
+		</td>
+		<td valign="top">
+			<select id="selectedFiled"  multiple="multiple" style="height: 300px;width: 200px;">
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="3">
+			<input type="button" value="确定" onclick="combination_sql()">
+			<input type="button" value="关闭" onclick="top.stackModelOper(false)">
+		</td>
+	</tr>
+</table> 
+</body>
+</html>

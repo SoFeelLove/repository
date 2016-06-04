@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="user" namespace="/user" extends="default">
+		
+		<!-- 使用Spring托管Action; class为ActionBean指定的name -->
+		<action name="*!*" class="/user/{1}Action" method="{2}">
+			<result name="success" type="redirect">/main/main.jsp</result>
+			<result name="error" type="redirect">/main/login.jsp</result>
+			<result name="loginOut" type="redirect">/main/login.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="customers" namespace="/customers" extends="default">
+		
+		<!-- 使用Spring托管Action; class为ActionBean指定的name -->
+		<action name="*!*" class="/customers/{1}Action" method="{2}">
+			<result name="default">/customers/${jspFileName}.jsp</result>
+		</action>		
+	</package>	
+	
+	<package name="suppliers" namespace="/suppliers" extends="default">
+		
+		<!-- 使用Spring托管Action; class为ActionBean指定的name -->
+		<action name="*!*" class="/suppliers/{1}Action" method="{2}">
+			<result name="default">/suppliers/${jspFileName}.jsp</result>
+		</action>		
+	</package>	
+	<package name="products" namespace="/products" extends="default">
+		
+		<!-- 使用Spring托管Action; class为ActionBean指定的name -->
+		<action name="*!*" class="/products/{1}Action" method="{2}">
+			<result name="default">/products/${jspFileName}.jsp</result>
+		</action>		
+	</package>
+</struts>

@@ -1,0 +1,186 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+a{
+	color: black;
+}
+.outerTable {
+    width: 100%;
+    border: none;
+}
+.innerTable {
+    background: #CCCCCC;
+    border: none;
+    width: 100%;
+}
+.innerTable td{
+	height: 26px;
+}
+table.outerTable td.tbTitle {
+	text-align: left;
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    font-size: 12px;
+    padding-left: 3px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0"); 
+    background: linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+table.outerTable td.tbTitle1 {
+	text-align: right;
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    font-size: 12px;
+    padding-right: 3px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0"); 
+    background: linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+.searchTable{
+	width:100%;
+	border: 1px #CCCCCC solid;
+	border-collapse: collapse;
+}
+.searchTable .tdLabelSearch{
+	text-align: right;
+	height: 26px;
+}
+.searchTable .tdDataSearch{
+	text-align: left;
+}
+.text {
+    background-image: url("../images/text-bg.gif");
+    background-position: left top;
+    background-repeat: repeat-x;
+    border: 1px solid #B5B8C8;
+    height: 18px;
+    font-size: 12px;
+}
+.textarea{
+	border: 1px solid #CCCCCC;
+	width: 99%;
+	background-image: url("../images/text-bg.gif");
+	background-repeat: repeat-x;
+	margin: 2px 0px;
+}
+.tdLabel {
+    background-color: #F1F1F1;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 230%;
+    text-align: right;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+.tdData{
+	text-align: left;
+	padding-left: 3px;
+	background: #ffffff;
+	vertical-align: middle;
+}
+.dataOuterTable{
+	width: 100%;
+    border: none;
+}
+table.dataOuterTable td.tbTitle {
+	font-size: 12px;
+	text-align: left;
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    padding-left:3px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0"); 
+    background: linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+.tbTitle1 {
+	font-size: 12px;
+	text-align: left;
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    padding-left:3px;
+    background-color: #F1F1F1;
+   }
+.dataTable{
+	background-color: #CCCCCC;
+	border: none;
+	width: 100%;
+}
+.textJc {
+	background-image: url(../images/button-bg.gif);
+	background-repeat: repeat-x;
+	text-align: center;
+	font-size: 12px;
+	height: 26px;
+}
+.dataTable .dataText{
+	background-color: #FFFFFF;
+	height: 25px;
+	text-align: left;
+	padding-left: 3px;
+}
+.dataTable .dataNum{
+	background-color: #FFFFFF;
+	height: 25px;
+	text-align: right;
+	padding-right: 3px;
+}
+.dataTable .dataNormal{
+	background-color: #FFFFFF;
+	height: 25px;
+	text-align: center;
+}
+button{
+	background-image: url("../images/button-bg.gif");
+	background-repeat: repeat-x;
+	border: 1px #919292 solid;
+	cursor: pointer;
+	padding-top: 3px\9;
+}
+.input_style4{
+	cursor: pointer;
+	background-image: url(../images/button4_red.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-color: Transparent;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	height: 24px;
+	font-size: 12px;
+	cursor: hand;
+	width: 93px;
+	color: #2E4853;
+}
+.input_style2{
+	cursor: pointer;
+	background-image: url(../images/button2.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	background-color: Transparent;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	height: 24px;
+	font-size: 12px;
+	cursor: hand;
+	width: 93px;
+	color: #2E4853;
+}
+img {
+	border: none;
+}

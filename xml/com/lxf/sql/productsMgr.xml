@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	
+	<content id="getAllProducts" note="得到所有产品">
+		<![CDATA[
+			select p_id,p_part_no,p_name,p_price,p_total_num 
+			from t_products p
+			where state = 1
+		]]>
+	</content>	
+	
+	<content id="updateProduct" note="更新产品信息">
+		<![CDATA[
+			update t_products p
+			set p.p_part_no = '${p_part_no}',
+			p.p_name = '${p_name}',
+			p.p_price = ${p_price},
+			p.p_total_num = ${p_total_num}
+			where p.p_id = ${p_id}
+		]]>
+	</content>	
+	
+	<content id="deleteProduct" note="deleteProduct">
+		<![CDATA[
+			update t_products p
+			set p.state = 0
+			where p.p_id in (${p_id})
+		]]>
+	</content>	
+	
+	<content id="getProductsById" note="得到pid产品">
+		<![CDATA[
+			select p_id,p_part_no,p_name from t_products
+			where p_id = ${pid}
+			and state = 1
+		]]>
+	</content>	
+	<content id="insertProduct" note="插入product">
+		<![CDATA[
+			insert into t_products(p_part_no,p_name,p_price,p_total_num) 
+			values('${p_part_no}','${p_name}','${p_price}','${p_total_num}')
+		]]>
+	</content>	
+</root>

@@ -1,0 +1,48 @@
+body{
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+.title{
+text-align: left;
+            background: none;
+            background-repeat: repeat-x;
+            font-weight: normal;
+            height: 23px;
+            font-size: 12px;
+            padding-left: 3px;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0");
+            background: linear-gradient(top, #F0F0F0, #B8B8B8);
+            background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+.title1{
+	background-color:#e0e0e0;
+}
+.mytitle{
+text-align: left;
+            background: none;
+            background-repeat: repeat-x;
+            font-weight: normal;
+            height: 23px;
+            font-size: 12px;
+            padding-left: 3px;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0");
+            background: linear-gradient(top, #F0F0F0, #B8B8B8);
+            background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+.tbTitle {
+    text-align: left;
+    background: none;
+    background-repeat: repeat-x;
+    font-weight: normal;
+    height: 23px;
+    font-size: 12px;
+    padding-left: 3px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#B8B8B8', GradientType="0");
+    background: linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -moz-linear-gradient(top, #F0F0F0, #B8B8B8);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#B8B8B8));
+}
+

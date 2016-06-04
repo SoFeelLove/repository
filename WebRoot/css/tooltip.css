@@ -1,0 +1,32 @@
+.tooltipclass123123
+{
+	background:#F5FCDE;
+	border:1px solid #9EC180;
+	border-bottom:4px solid #9EC180;
+	width:400px;
+	padding:0;
+	margin:0;
+	position:absolute;
+	text-align:left;
+	filter:alpha(opacity:93);
+	opacity:9.3;
+	font-size: 9pt;
+}
+
+.tooltipclass123123 .tip
+{ 
+	background:url('../images/icon_tooltip_tip.png') 5px 5px no-repeat;
+	text-indent:20px; 
+	margin:0; 
+	padding:4px; 
+	line-height:130%;
+}
+.tooltipclass123123 .url
+{ 
+	margin:0; 
+	padding:4px; 
+	line-height:130%; 
+	border-top:1px dashed #9EC180;
+	color:blue; 
+	text-align:right;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<title>Row Editing in DataGrid - jQuery EasyUI Demo</title>
+<link rel="stylesheet" type="text/css"
+	href="../themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../css/demo.css">
+<script type="text/javascript" src="../js/easyui1.4.3/jquery.min.js"></script>
+<script type="text/javascript"
+	src="../js/easyui1.4.3/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../main/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="../main/js/myJs.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$('#p_name').textbox({
+			required : true
+		});
+		$('#p_price,#p_total_num').numberbox({});
+		$('#p_part_no').numberbox({required : true});
+	});
+	function clearForm() {
+		$('#ff').form('clear');
+	}
+</script>
+</head>
+<body style="background: #EAF1FA;font-size: 12px;">
+	<div class="easyui-panel" >
+	<form id="ff" method="post">
+			<table cellpadding="5" style="margin:0px auto;">
+				<tr>
+					<td>产品名称:</td>
+					<td><input style="width:160px" name="product.p_name"
+						id="p_name" /></td>
+				</tr>
+				<tr>
+					<td>件号:</td>
+					<td><input style="width:160px" name="product.p_part_no"
+						id="p_part_no" /></td>
+				</tr>
+				<tr>
+					<td>库存:</td>
+					<td><input style="width:160px" name="product.p_total_num"
+						id="p_total_num" /></td>
+				</tr>
+				<tr>
+					<td>价格:</td>
+					<td><input style="width:160px" name="product.p_price"
+						id="p_price" /></td>
+				</tr>
+
+			</table>
+			</form>
+			<div style="text-align:center;padding:5px">
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					iconcls="icon-save"
+					onclick="javascript:sumbitForm('productsMgr!addProduct.action');">确定</a>
+				<a href="javascript:void(0)" class="easyui-linkbutton"
+					iconcls="icon-clear" onclick="clearForm()">重置</a>
+			</div>
+	</div>
+</body>
+</html>
