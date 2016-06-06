@@ -41,6 +41,29 @@
                 }
             },
             '-',
+       		{
+                text:'退单',
+                iconCls:'icon-undo',
+                handler:function(){
+                 	/* var deleteConfig = {
+                 		url:'ordersMgr!returnOrdersProducts.action',
+                 		data:'?orderIds=${orderIds}&p_part_no='+getDeleteRows('p_id'),
+                 		tip:'退货'
+                 	};
+                	deleteRowsMultiCondition(deleteConfig); */
+                	
+                	var config ={
+                		title:'退单',
+                		url:'${pageContext.request.contextPath}/customers/returnOrdersProducts.html',
+                		width:'720',
+                		height:'450',
+                		refresh:true,
+                		target:$('#dg').datagrid('getSelected');
+                	};
+                	top.showMyWindow(config);
+                }
+            },
+            '-',
             {
                 text:'导出',
                 iconCls:'icon-save',

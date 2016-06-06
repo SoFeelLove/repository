@@ -38,7 +38,7 @@
 	<content id="insertProduct" note="插入product">
 		<![CDATA[
 			insert into t_products(p_part_no,p_name,p_price,p_total_num) 
-			values('${p_part_no}','${p_name}','${p_price}','${p_total_num}')
+			values('${p_part_no}','${p_name}',${p_price},${p_total_num})
 		]]>
 	</content>	
 </root>

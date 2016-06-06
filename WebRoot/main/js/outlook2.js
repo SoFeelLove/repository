@@ -7,7 +7,9 @@ $(function(){
 	tabClose();
 	tabCloseEven();
 })
-
+/**
+ * <a ref="11" href="#" rel="/repository/customers/customersMgr!list.action"><span class="icon icon-nav">&nbsp;</span><span class="nav">查看客户</span></a>
+ */
 //初始化左侧
 function InitLeftMenu() {
 	$("#nav").accordion({animate:false});//为id为nav的div增加手风琴效果，并去除动态滑动效果
@@ -15,7 +17,7 @@ function InitLeftMenu() {
 		var menulist ='';
 		menulist +='<ul>';
         $.each(n.menus, function(j, o) {
-			menulist += '<li><div><a ref="'+o.menuid+'" href="#" rel="' + o.url + '" ><span class="icon '+o.icon+'" >&nbsp;</span><span class="nav">' + o.menuname + '</span></a></div></li> ';
+			menulist += '<li><div style="text-align:center;"><a ref="'+o.menuid+'" href="#" rel="' + o.url + '" ><span class="icon '+o.icon+'" >&nbsp;</span><span class="nav">' + o.menuname + '</span></a></div></li> ';
         })
 		menulist += '</ul>';
 

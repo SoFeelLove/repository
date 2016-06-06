@@ -48,7 +48,7 @@ public class CustomersMgrAction extends CustomersMgrActionBean{
     					+"return s+'    '+c;}"+
     				"else{ var e = '<a onclick=\"editrow(this);\">编辑</a>';"
     					+" var d = '<a onclick=\"deleterow(this);\">删除</a>';"
-    					+ "return e +'    '+ d; }}}";
+    					+ "return e ; }}}";
       	return DEFAULT;
 		
 	}

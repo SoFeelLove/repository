@@ -139,7 +139,7 @@ jQuery(document).ready(function(){
         //sortName: 'code',
         //sortOrder: 'desc',
         singleSelect: false,
-        checkOnSelect:false,
+        checkOnSelect:true,
         remoteSort: true,
         showHeader: true,
         pageSize: window['pageSize']!== undefined?window['pageSize']:30,
@@ -501,4 +501,6 @@ function withoutURLParams4Export(){
 		$('#form').submit();
 		$('#form').attr("action", initialAction);
 	}
+	
+
 </script>

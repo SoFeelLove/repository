@@ -36,5 +36,13 @@ public class LoginMgrService extends BaseService{
 		}
 		return "true";
 	}
+	
+	public boolean checkUserByUsername(String username){
+		String sql =" select * from t_users where u_name = '" +username +"' and state = 1";
+		if (commonMapper.runSql(sql).size() > 0) {
+			return true;
+		}
+		return false;
+	}
 
 }

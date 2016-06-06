@@ -19,7 +19,6 @@
             src="../js/easyui/jquery.easyui.min.js"></script>
 
     <script type="text/javascript" src="../js/util.js"></script>
-    <script type="text/javascript" src="../main/js/myJs.js"></script>
     <script type="text/javascript" src="../main/js/openWin.js"></script>
     <script type="text/javascript">
    function query() {
@@ -34,11 +33,12 @@
            handler:function(){
 	      		var config ={
 	           		title:'新增客户',
-	           		url:'addCustomer.html',
+	           		url:'${pageContext.request.contextPath}/customers/addCustomer.html',
 	           		width:'392',
-	           		height:'450'
+	           		height:'450',
+	           		target:$('#dg')
 	           	};
-	           	showMyWindow(config);
+	           	top.showMyWindow(config);
            } 
        },
    	'-',
@@ -47,11 +47,11 @@
            iconCls:'icon-remove',
            handler:function(){
            var deleteConfig = {
-           		url:'customersMgr!deleteCustomersById.action',
+           		url:'${pageContext.request.contextPath}/customers/customersMgr!deleteCustomersById.action',
            		serviceKey:'customerId',
            		rowKey:'C_ID'
            	};
-           deleteChoiceRows(deleteConfig);    
+           top.deleteChoiceRows($("#dg"),deleteConfig);    
            } 
        },
        '-',
@@ -62,7 +62,6 @@
                exportExcel();
            }
        },'-'];
-       
 function doubleClickRowHandler(rowid, rec) {
 	if (rec.SM_ID !== undefined && rec.SM_ID !== '') {
 		mx();
@@ -77,29 +76,28 @@ function mx() {
 	};
 	showMyWindow(config);
 }
-
 function saverow(target){
 	var config = {
 		  msg:'确定提交吗？',
-		  url:'customersMgr!insertOrUpdateCustomers.action',
+		  url:'${pageContext.request.contextPath}/customers/customersMgr!insertOrUpdateCustomers.action',
 		  rs:'提交',
 		  serviceKey:'updated'
        	};  
 	saveEditor(target,config);
 }
-
 /*删除*/
 function deleterow(target){
 	$('#dg').datagrid('selectRow',getRowIndex(target));
 	var row = $('#dg').datagrid('getSelected');
     var config = {
-		  url:'customersMgr!deleteCustomer.action',
-		  data:row
+		  url:'${pageContext.request.contextPath}/customers/customersMgr!deleteCustomer.action',
+		  data:row,
+		  title:'提示'
        	};  
 	 deleteEditor(target,config);
+	 $('#dg').datagrid('reload');
 }
-					
-				</script>
+</script>
 </head>
 <body >
 
@@ -133,7 +131,7 @@ function deleterow(target){
        class="margin">
     <tr>
         <td valign="top" colspan="2">
-            <div id="exp"><table id="dg"></table></div>
+            <div id="exp" name="datagrid"><table id="dg"></table></div>
             <div id="pagerText" style="text-align: center; margin-top: 10px;">
                 <!-- 页面正在加载.......... -->
             </div>

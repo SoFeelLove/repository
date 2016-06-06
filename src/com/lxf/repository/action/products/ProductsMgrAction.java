@@ -41,7 +41,7 @@ public class ProductsMgrAction extends ProductsMgrActionBean {
         //当前列是否冻结
         boolean [] frozen = {false,false,false,false,false};
         //单元格是否加格式化函数
-        boolean [] isFormatColumn = {false,false,false,false,false};
+        boolean [] isFormatColumn = {false,false,true,false,false};
         //单元格是否加样式函数
         boolean [] isStylerColumn = {false,false,false,false,false};
       //单元格是否可以编辑
@@ -60,7 +60,7 @@ public class ProductsMgrAction extends ProductsMgrActionBean {
     					+"return s+'    '+c;}"+
     				"else{ var e = '<a onclick=\"editrow(this);\">编辑</a>';"
     					+" var d = '<a onclick=\"deleterow(this);\">删除</a>';"
-    					+ "return e +'    '+ d; }}}";
+    					+ "return e ; }}}";
       	return DEFAULT;
 		
 	}
@@ -88,23 +88,16 @@ public class ProductsMgrAction extends ProductsMgrActionBean {
         report.exportToExcel(title, "", td);
     }
 	
-	public void updateCustomers(){
+	public void updateProducts(){
 		String jsonData = getRequest().getParameter("updated");
 		AjaxPrint(productsMgrService.updateProduct(formatToListHashMap(jsonData).get(0)));
 	}
 	
-	/**
-	 * 删除客户,带参数
-	 */
-	public void deleteCustomer(){
+	public void deleteProduct(){
 		String jsonData = getRequest().getParameter("deleted");
 		AjaxPrint(productsMgrService.deleteProduct(formatToListHashMap(jsonData).get(0)));
 	}
-	/**
-	 * 删除客户，
-	 * @author lxf
-	 */
-	public void deleteCustomersById(){
+	public void deleteProductsById(){
 		AjaxPrint(productsMgrService.deleteProduct(pid));
 	}
 	public void addProduct(){

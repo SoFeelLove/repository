@@ -154,7 +154,7 @@ public class CustomersMgrService extends BaseService{
 				.replace("${customer_address}", customer.getCustomer_address())
 				.replace("${customer_other}", customer.getCustomer_other());
 		commonMapper.executeSql(sql);
-		return "1";
+		return "true";
 	}
 
 }

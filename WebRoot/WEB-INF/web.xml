@@ -23,6 +23,38 @@
 	<listener>
 		<listener-class>com.lxf.base.config.ListenerConfig</listener-class>
 	</listener>
+	
+	<!-- 权限过滤器 -->
+	<filter>
+		<filter-name>sessionFilter</filter-name>
+		<filter-class>com.lxf.base.security.filter.SecuritySystemFilter</filter-class>
+		<init-param>
+			<param-name>excludePackage</param-name><!-- 非过滤页面 -->
+			<param-value>/main/login.jsp;loginMgr!checkLogin.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>includePackage</param-name><!-- 过滤页面 -->
+			<param-value>.jsp;.action</param-value>
+		</init-param>
+		<init-param>
+			<param-name>redirectPath</param-name>
+			<param-value>/main/login.jsp</param-value>
+		</init-param>		
+	</filter>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	
+	
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -31,6 +63,7 @@
     <filter-name>struts2</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <welcome-file-list>
     <welcome-file>/main/login.jsp</welcome-file>
   </welcome-file-list>

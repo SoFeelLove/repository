@@ -185,7 +185,6 @@ public class OrdersMgrService extends BaseService{
 	 * @return 
 	 */
 	public List<HashMap<String, Object>> getOrdersProductById(Pager pager,String sord,String  sidx, String orderIds) {
-		// TODO Auto-generated method stub
 		if (StringUtils.isNullOrEmpty(orderIds)) {
 			orderIds = "";
 		}
@@ -221,7 +220,6 @@ public class OrdersMgrService extends BaseService{
 		String updateOrderProduct = this.getXmlSql("deleteOrderProducts").replace("${order_id}",hashMap.get("orderId")).replace("${p_id}", hashMap.get("p_id"));
 		commonMapper.executeSql(updateOrderProduct);
 		return "true";
-		
 	}
 	/**
 	 * 删除具体订单项
@@ -230,10 +228,55 @@ public class OrdersMgrService extends BaseService{
 	 * @param p_part_no
 	 */
 	public String deleteOrdersProducts(String orderId, String p_part_no) {
-		// TODO Auto-generated method stub
 		String sql = this.getXmlSql("deleteOrderProducts").replace("${order_id}",orderId).replace("${p_id}", p_part_no);
 		commonMapper.executeSql(sql);
 		return "true";
+	}
+	/**
+	 * 退单
+	 * @author lxf
+	 * @param orderId
+	 * @param p_part_no
+	 * @return
+	 */
+	public String returnOrdersProducts(String orderId, String p_part_no) {
+		/**
+		 * 在订单表中删除
+		 */
+		deleteOrdersProducts(orderId,p_part_no);
+		/**
+		 * 插入退单表
+		 */
+		String sql = this.getXmlSql("returnOrdersProducts").replace("${order_id}",orderId).replace("${p_id}", p_part_no);
+		commonMapper.executeSql(sql);
+		return "true";
+	}
+	/**
+	 * 退货信息
+	 * @author lxf
+	 * @param pager
+	 * @param sord
+	 * @param sidx
+	 * @param orderIds
+	 * @return
+	 */
+	public List getReturnOrdersProductById(Pager pager, String sord,
+			String sidx, String orderIds) {
+		if (StringUtils.isNullOrEmpty(orderIds)) {
+			orderIds = "";
+		}
+		String sql = this.getXmlSql("ordersMgr.xml","getReturnOrdersProductById").replace("${orderId}", orderIds);
+		// 排序
+		if (sord != null && !"".equals(sord)) {
+			sql += " order by " + sidx + " " + sord;
+		} else {
+			sql += " order by tp.p_part_no desc";
+		}
+		if (pager == null) {
+			return commonMapper.runSql(sql);
+		}
+		pager.setTotalRows(commonMapper.getCountBySql(sql));
+		return commonMapper.getListByPageForMySQL(pager, sql);
 	}
 	
 

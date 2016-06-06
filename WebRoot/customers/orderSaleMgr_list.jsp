@@ -17,80 +17,77 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript"
             src="../js/easyui/jquery.easyui.min.js"></script>
-
     <script type="text/javascript" src="../js/util.js"></script>
     <script type="text/javascript" src="../main/js/myJs.js"></script>
     <script type="text/javascript" src="../main/js/openWin.js"></script>
-    <script type="text/javascript">
-        function query() {
-            setPagerMethod('first');
-           // $("#form").submit();
-        }
-        var toolBar= [
-        	'-',
-       		{
-                text:'新增售货单',
-                iconCls:'icon-add',
-                handler:function(){
-                	var config ={
-                		title:'添加售货单',
-                		url:'addSaleRowGoods.html',
-                		width:'720',
-                		height:'450',
-                		refresh:true
-                	};
-                	showMyWindow(config);
-                } 
-            },
-            '-',
-       		{
-                text:'删除售货单',
-                iconCls:'icon-remove',
-                handler:function(){
-                 	var deleteConfig = {
-                 		url:'orderSaleMgr!deleteOrders.action',
-                 		serviceKey:'orderIds',
-                 		rowKey:'ORDER_ID'
-                 	};
-                	deleteChoiceRows(deleteConfig);
-                }
-            },
-            '-',
-            {
-                text:'导出',
-                iconCls:'icon-save',
-                handler:function(){
-                    exportExcel();
-                }
-            },'-'];
-            
-            //订单号，格式化函数
-        function formatter_ORDER_ID_handler(value,rec)
-        {
-            return '<a onclick=showDetails("'+value+'") >'+value+'</a>';
-        }
-        /**
-        	显示订单详情
-        */
-        function showDetails(orderId){
+<script type="text/javascript">
+function query() {
+    setPagerMethod('first');
+   // $("#form").submit();
+}
+var toolBar= [
+	'-',
+	{
+        text:'新增售货单',
+        iconCls:'icon-add',
+        handler:function(){
         	var config ={
-                		title:orderId+' 订单详情',
-                		url:'orderSaleMgr!getOrdersProductById.action?orderIds='+orderId,
-                		width:'760',
-                		height:'450',
-                		refresh:false
-                	};
-                	showMyWindow(config);
+        		title:'添加售货单',
+        		url:'${pageContext.request.contextPath}/customers/addSaleRowGoods.html',
+        		width:'720',
+        		height:'450',
+        		target:$('#dg')
+        	};
+        	top.showMyWindow(config);
+        } 
+    },
+    '-',
+	{
+        text:'删除售货单',
+        iconCls:'icon-remove',
+        handler:function(){
+         	var deleteConfig = {
+         		url:'${pageContext.request.contextPath}/customers/orderSaleMgr!deleteOrders.action',
+         		serviceKey:'orderIds',
+         		rowKey:'ORDER_ID'
+         	};
+        	top.deleteChoiceRows($("#dg"),deleteConfig);
         }
-            
-            
-		function doubleClickRowHandler(rowid, rec) {
-			if (rec.SM_ID !== undefined && rec.SM_ID !== '') {
-				mx();
-			}
-		}
-					
-				</script>
+    },
+    '-',
+    {
+        text:'导出',
+        iconCls:'icon-save',
+        handler:function(){
+            exportExcel();
+        }
+    },'-'];
+    
+//订单号，格式化函数
+function formatter_ORDER_ID_handler(value,rec)
+{
+    return '<a onclick=showDetails("'+value+'") >'+value+'</a>';
+}
+/**
+	显示订单详情
+*/
+function showDetails(orderId){
+	var config ={
+        		title:orderId+' 订单详情',
+        		url:'${pageContext.request.contextPath}/customers/orderSaleMgr!getOrdersProductById.action?orderIds='+orderId,
+        		width:'760',
+        		height:'450',
+        		refresh:false
+        	};
+        	top.showMyWindow(config);
+}
+      
+function doubleClickRowHandler(rowid, rec) {
+	if (rec.SM_ID !== undefined && rec.SM_ID !== '') {
+		mx();
+	}
+}
+</script>
 </head>
 <body >
 
@@ -143,10 +140,9 @@
 
 <%@ include file="../widget/table_includeBeta.jsp"%>
 <style type="text/css">
-    html{
-        overflow-y:auto;
-    }
-
+html{
+    overflow-y:auto;
+}
 </style>
 </body>
 </html>

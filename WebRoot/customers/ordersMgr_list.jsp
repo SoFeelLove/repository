@@ -17,9 +17,8 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript"
             src="../js/easyui/jquery.easyui.min.js"></script>
-
+	<script type="text/javascript" src="../main/js/myJs.js"></script>
     <script type="text/javascript" src="../js/util.js"></script>
-    <script type="text/javascript" src="../main/js/myJs.js"></script>
     <script type="text/javascript" src="../main/js/openWin.js"></script>
     <script type="text/javascript">
         function query() {
@@ -32,14 +31,15 @@
                 text:'新增订单',
                 iconCls:'icon-add',
                 handler:function(){
-                	var config ={
+                	var config = {
                 		title:'添加进货单',
-                		url:'addRowGoods.html',
+                		url:'${pageContext.request.contextPath}/customers/addRowGoods.html',
                 		width:'720',
                 		height:'450',
-                		refresh:true
+                		refresh:true,
+                		target:$('#dg')
                 	};
-                	showMyWindow(config);
+                	top.showMyWindow(config);
                /*  var _config1 = {
 	                title: '工单列表',                //窗口名称
 	                url: '${pageContext.request.contextPath}/suppliers/addGoods.jsp', //窗口的地址
@@ -59,11 +59,11 @@
                 iconCls:'icon-remove',
                 handler:function(){
                  	var deleteConfig = {
-                 		url:'ordersMgr!deleteOrders.action',
+                 		url:'${pageContext.request.contextPath}/customers/ordersMgr!deleteOrders.action',
                  		serviceKey:'orderIds',
                  		rowKey:'ORDER_ID'
                  	};
-                	deleteChoiceRows(deleteConfig);
+                	top.deleteChoiceRows($("#dg"),deleteConfig);
                 }
             },
             '-',
@@ -75,23 +75,46 @@
                 }
             },'-'];
             
-            //订单号，格式化函数
-        function formatter_ORDER_ID_handler(value,rec)
+        //订单号，格式化函数
+        function formatter_JH_NUM_handler(value,rec)
         {
-            return '<a onclick=showDetails("'+value+'") >'+value+'</a>';
+        	if(value >= 1)
+            	return '<a onclick=showDetails("'+rec.ORDER_ID+'",1) >'+value+'</a>';
+            else
+            	return value;
+        }
+        function formatter_TD_NUM_handler(value,rec)
+        {
+        	if(value >= 1)
+            	return '<a onclick=showDetails("'+rec.ORDER_ID+'",2) >'+value+'</a>';
+            else 
+            	return value;
+        }
+        function formatter_TOTAL_NUM_handler(value,rec)
+        {
+        	if(value >= 1)
+            	return '<a onclick=showDetails("'+rec.ORDER_ID+'",3) >'+value+'</a>';
+           	else
+           	 	return value;
         }
         /**
         	显示订单详情
         */
-        function showDetails(orderId){
+        function showDetails(orderId,queryType){
+        	var url = "${pageContext.request.contextPath}/customers/ordersMgr!getOrdersProductById.action?orderIds=";
+        	if(queryType == 2){
+        		url = "${pageContext.request.contextPath}/customers/ordersMgr!getReturnOrdersProductById.action?orderIds=";
+        	}else if(queryType == 3){
+        		url = "${pageContext.request.contextPath}/customers/ordersMgr!getAllOrdersProductById.action?orderIds=";
+        	}        	
         	var config ={
-                		title:orderId+' 订单详情',
-                		url:'ordersMgr!getOrdersProductById.action?orderIds='+orderId,
+                		title:orderId+' 退货详情',
+                		url:url+orderId,
                 		width:'760',
                 		height:'450',
                 		refresh:false
                 	};
-                	showMyWindow(config);
+                	top.showMyWindow(config);
         }
             
             

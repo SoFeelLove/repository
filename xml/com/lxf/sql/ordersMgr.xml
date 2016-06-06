@@ -5,7 +5,7 @@
 			select c.customer_id cid,
 			c.customer_name cname,
 			c.customer_contact,
-			c.customer_tel,
+			c.customer_tel ,
 			c.customer_address,
 			c.customer_other,
 			c.state,
@@ -21,11 +21,24 @@
 		<![CDATA[
 			select DISTINCT o.order_id,date_format(o.order_date,'%Y-%m-%d %H:%i:%S') addtime,
 			c.customer_name c_name,c.customer_id c_id,
-			c.customer_contact c_contact
+			c.customer_contact c_contact,
+			c.customer_tel c_tel,
+			ifnull(jh.num,0) jh_num,/*进货数量*/
+			ifnull(td.num,0) td_num,/*退货数量*/
+			ifnull(jh.num,0) + ifnull(td.num,0) total_num /*总量*/
 			from t_orders o
 			left join t_customers c on c.customer_id = o.customer_id
-			left join t_orders_jhd shd on o.order_id = shd.order_id 
-			where o.state = 1 and shd.state = 1
+			left join(
+			select jh.order_id ,count(*) num
+			from t_orders_jhd jh
+			where jh.state = 1
+			group by jh.order_id
+			)jh on jh.order_id = o.order_id
+			left join(
+			select td.order_id,count(*) num
+			from t_orders_td td
+			group by td.order_id) td on td.order_id = o.order_id
+			where o.state = 1 and (ifnull(jh.num,0) + ifnull(td.num,0)) > 0
 		]]>
 	</content>	
 	
@@ -67,6 +80,21 @@
 			where order_id = '${order_id}' and product_id = '${p_id}'
 		]]>
 	</content>	
+	<content id="returnOrdersProducts" note="returnOrdersProducts">
+		<![CDATA[
+			insert into t_orders_td(order_id,product_id,product_num,product_real_price,real_total_cost,td_time) 
+			select 
+			jh.order_id,
+			jh.product_id,
+			jh.product_num,
+			jh.product_real_price,
+			jh.real_total_cost,
+			NOW()
+			from t_orders_jhd jh
+			where jh.order_id = '${order_id}'
+			and jh.product_id in (${p_id})
+		]]>
+	</content>	
 	<content id="deleteOrderProducts" note="deleteOrderProducts">
 		<![CDATA[
 			update t_orders_jhd set state = 0 
@@ -96,6 +124,21 @@
 			from t_orders_jhd op
 			left join t_products tp on tp.p_id = op.product_id 
 			where op.order_id = '${orderId}' and op.state = 1
+		]]>
+	</content>	
+	<content id="getReturnOrdersProductById" note="退货信息">
+		<![CDATA[
+			select op.order_id,
+			tp.p_id,
+			tp.p_part_no,
+			tp.p_name,
+			op.product_num p_num,
+			op.product_real_price p_price,
+			op.real_total_cost totalcost,
+			op.product_num*op.product_real_price total
+			from t_orders_td op
+			left join t_products tp on tp.p_id = op.product_id 
+			where op.order_id = '${orderId}' 
 		]]>
 	</content>	
 </root>

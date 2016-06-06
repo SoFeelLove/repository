@@ -38,10 +38,18 @@ public class ProductsMgrService extends BaseService{
 	}
 	
 	public String insertProduct(Product productBean){
+		String p_price = productBean.getP_price();
+		String p_total_num = productBean.getP_total_num();
+		if (StringUtils.isNullOrEmpty(p_price)) {
+			p_price = "0.0";
+		}
+		if (StringUtils.isNullOrEmpty(p_total_num)) {
+			p_total_num = "0";
+		}
 		String sql = getXmlSql().replace("${p_part_no}", productBean.getP_part_no())
 				.replace("${p_name}", productBean.getP_name())
-				.replace("${p_price}", productBean.getP_price())
-				.replace("${p_total_num}", productBean.getP_total_num());
+				.replace("${p_price}", p_price)
+				.replace("${p_total_num}", p_total_num);
 		commonMapper.executeSql(sql);
 		return "true";
 	}

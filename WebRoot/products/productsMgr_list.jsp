@@ -17,9 +17,7 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript"
             src="../js/easyui/jquery.easyui.min.js"></script>
-
     <script type="text/javascript" src="../js/util.js"></script>
-    <script type="text/javascript" src="../main/js/myJs.js"></script>
     <script type="text/javascript" src="../main/js/openWin.js"></script>
     <script type="text/javascript">
    function query() {
@@ -34,11 +32,12 @@
            handler:function(){
 	      		var config ={
 	           		title:'新增产品',
-	           		url:'addProduct.html',
+	           		url:'${pageContext.request.contextPath}/products/addProduct.html',
 	           		width:'392',
-	           		height:'350'
+	           		height:'265',
+	           		target:$('#dg')
 	           	};
-	           	showMyWindow(config);
+	           	top.showMyWindow(config);
            } 
        },
    	'-',
@@ -47,11 +46,11 @@
            iconCls:'icon-remove',
            handler:function(){
            var deleteConfig = {
-           		url:'productsMgr!deleteProductsById.action',
-           		serviceKey:'p_id',
-           		rowKey:'ID'
+           		url:'${pageContext.request.contextPath}/products/productsMgr!deleteProductsById.action',
+           		serviceKey:'pid',
+           		rowKey:'P_ID'
            	};
-           deleteChoiceRows(deleteConfig);    
+           top.deleteChoiceRows($("#dg"),deleteConfig);    
            } 
        },
        '-',
@@ -67,7 +66,7 @@
 function saverow(target){
 	var config = {
 		  msg:'确定提交吗？',
-		  url:'productsMgr!updateProducts.action',
+		  url:'${pageContext.request.contextPath}/products/productsMgr!updateProducts.action',
 		  rs:'提交',
 		  serviceKey:'updated'
        	};  
@@ -79,12 +78,31 @@ function deleterow(target){
 	$('#dg').datagrid('selectRow',getRowIndex(target));
 	var row = $('#dg').datagrid('getSelected');
     var config = {
-		  url:'productsMgr!deleteProduct.action',
+		  url:'${pageContext.request.contextPath}/products/productsMgr!deleteProduct.action',
 		  data:row
        	};  
 	 deleteEditor(target,config);
 }
-					
+			
+     //订单号，格式化函数
+function formatter_P_PART_NO_handler(value,rec)
+{
+    return '<a onclick=showDetails("'+value+'") >'+value+'</a>';
+}
+/**
+	显示商品详情
+*/
+function showDetails(p_part_no){
+	var config ={
+        		title:orderId+' 订单详情',
+        		url:'${pageContext.request.contextPath}/products/productsMgr!getOrdersProductById.action?orderIds='+orderId,
+        		width:'760',
+        		height:'450',
+        		refresh:false
+    };
+    top.showMyWindow(config);
+}
+		
 </script>
 </head>
 <body >

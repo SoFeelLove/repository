@@ -42,6 +42,19 @@
             },
             '-',
             {
+                text:'退单',
+                iconCls:'icon-undo',
+                handler:function(){
+                 	var deleteConfig = {
+                 		url:'orderSaleMgr!returnOrdersProducts.action',
+                 		data:'?orderIds=${orderIds}&p_part_no='+getDeleteRows('p_id'),
+                 		tip:'退货'
+                 	};
+                	deleteRowsMultiCondition(deleteConfig);
+                }
+            },
+            '-',
+            {
                 text:'导出',
                 iconCls:'icon-save',
                 handler:function(){

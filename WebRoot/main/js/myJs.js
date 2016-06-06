@@ -44,20 +44,27 @@ function operateDataGrid(config){
      });
 }
 
-
-function deleteRow(config){
-	return showConfirm(config.title,config.msg,function(){
+/**
+ * 单行删除
+ * @param config
+ * @returns {Boolean}
+ */
+function deleteRow(target,config){
+	var flag = true;
+	showConfirm(config.title,config.msg,function(){
      	$.post(config.url,config.data,function(rsp){
      		showProcess(true,'温馨提示','正在提交数据。。。');
      		if(rsp=="true"){
      			showProcess(false,'温馨提示','正在提交数据。。。');
-     			$('#dg').datagrid('deleteRow', config.index);
      			$.messager.alert(config.title,config.rs+"成功！");
+     			target.datagrid('deleteRow', config.index);
      		}else{
-     			$.messager.alert(config.title,config.rs+"失败！");     			
+     			$.messager.alert(config.title,config.rs+"失败！");
+     			flag = false;
      		}
      	},"text"); 
      });
+	return flag;
 }
 
 
@@ -73,6 +80,7 @@ function showProcess(isShow,title,msg){
 		msg:msg
 	});
 }
+
 /*防止重复提交，显示进度条。提交完成，关闭进度条并提示操作信息 data：1,提交成功*/
 function sumbitForm(url){
 	$('#ff').form('submit',{
@@ -86,13 +94,13 @@ function sumbitForm(url){
 		},
 		success: function(data){
 			showProcess(false);
-			if(data == 1){
+			if(data){
 				showMsg('温馨提示','提交成功！');
 				if(parent !== undefined){
 					if($.isFunction(window.reloadParent)){
 						reloadParent.call();
 					}else{
-						parent.$('#dg').datagrid('reload');
+//						parent.$('#dg').datagrid('reload');
 						parent.closeMyWindow();
 					}
 				}
@@ -107,8 +115,10 @@ function sumbitForm(url){
 		
 	});
 }
-
-/*窗口*/
+/**
+ * 以窗口方式显示
+ * @param config 窗口配置信息
+ */
 function showMyWindow(config){
 	$('body').append('<div id="myWindow" class="easyui-window" closed="true" data-options="iconCls:\'icon-save\'" style="padding:1px; margin:0 auto;"></div>').css("padding","0px");
 	$('#myWindow').window({
@@ -118,23 +128,25 @@ function showMyWindow(config){
 		height:config.height === undefined ? 400 :config.height,
 	    content:'<iframe scrolling="yes" frameborder="0" src="' + config.url +'"style="width:100%;height:100%;"></iframe>',
 	    //href:href === undefined?null:href,
-		modal:config.modal === undefined ? true : config.modal,
+		modal:config.modal === undefined ? true : config.modal,//模态
 		minimizable:config.minimizable=== undefined ? false :config.minimizable,
 		maximizable:config.maximizable=== undefined ? false :config.maximizable,
 		shadow:config.shadow === undefined ? true : config.shadow,
 		cache:config.cache === undefined ? false : config.cache,
 		closed:config.closed === undefined ? false : config.closed,
 		collapsible:config.collapsible === undefined ? false : config.collapsible,
-		inline:config.inline === undefined ? false : config.inline,
+		inline:config.inline === undefined ? false : config.inline,//true,放置在父容器中，false浮在所有元素顶部
+		resizable:config.resizable === undefined ? false : config.resizable,//能否调整尺寸
 		loadingMessage:'正在加载数据，请稍等片刻。。。。。。',
 		onClose:function(){
-			if(config.refresh !== null && config.refresh){
-			if($('#dg') !== undefined )
-				$('#dg').datagrid('reload');
-			}
+			var isRefresh = config.refresh === undefined ? true : config.refresh;
+			if(isRefresh && config.target != null){}
+				config.target.datagrid('reload');
 		}
 	});
 }
+
+
 /*关闭窗口*/
 function closeMyWindow(){
 	$('#myWindow').window('close');
@@ -199,9 +211,12 @@ function getCurrTime(){
 function fomatDate(str) {
    return (new Date(parseInt(str.substring(str.indexOf('(') + 1, str.indexOf(')'))))).format("yyyy-MM-dd hh:mm:ss");
 }
-//删除选中行,serviceKey服务器关键字，rowKey前台对应后台的关键字
-function deleteChoiceRows(deleteConfig) {
-	var rows = $('#dg').datagrid('getSelections');
+/**
+ * 删除选中行,serviceKey服务器关键字，rowKey前台对应后台的关键字
+ * @param target 操作目标
+ */
+function deleteChoiceRows(target,deleteConfig) {
+	var rows = target.datagrid('getSelections');
 	//判断是否选择行
 	if (!rows || rows.length == 0) {
 		$.messager.alert('提示', '请选择要删除的数据!', 'info');
@@ -221,7 +236,7 @@ function deleteChoiceRows(deleteConfig) {
 				url : href,
 				dataType: "text",
 				success : function(msg) {
-					$('#dg').datagrid('reload');
+					target.datagrid('reload');
 				}
 			});
 		}			
@@ -231,7 +246,8 @@ function deleteChoiceRows(deleteConfig) {
 //删除选中行,serviceKey服务器关键字，rowKey前台对应后台的关键字
 function deleteRowsMultiCondition(deleteConfig) {
 	var href = deleteConfig.url + deleteConfig.data;
-	$.messager.confirm('提示', '是否删除选中的条数据?', function (r) {
+	var tip = deleteConfig.tip==null?删除:deleteConfig.tip;
+	$.messager.confirm('提示', '是否'+tip+'选中的数据?', function (r) {
 		if (!r) {
 			return;
 		}else{

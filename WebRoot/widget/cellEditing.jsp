@@ -51,8 +51,15 @@ jqgridHeight = '350';//如果加上此属性就 不再自适应
 		//加操作
 		operationField = "{title:'&nbsp',colspan:11},{field:'COLL_OBJ_ID',title:'操作',width:100,align:'center', rowspan:2,formatter: function(value,rec){return '<a onclick=\"alert(' + value + ');\">明细</a>';}}";
 		//标题分组  就加此
-		operationField = "{title:'基本信息',colspan:11},{field:'COLL_OBJ_ID',title:'操作',width:100,align:'center', rowspan:2,formatter: function(value,rec){return '<a onclick=\"alert(' + value + ');\">明细</a>';}}";
-		
+		//标题分组  就加此
+        operationField = "{title:'产品信息',colspan:4},{field:'action',title:'操作',width:100,align:'center', rowspan:2,"
+    			+"formatter: function(value,rec,index){"
+    			+" if(rec.editing){ var s = '<a onclick=\"saverow(this);\">保存</a>';"
+    				+" var c = '<a onclick=\"cancelrow(this);\">取消</a>'; "
+    					+"return s+'    '+c;}"+
+    				"else{ var e = '<a onclick=\"editrow(this);\">编辑</a>';"
+    					+" var d = '<a onclick=\"deleterow(this);\">删除</a>';"
+    					+ "return e +" "+d; }}}"
 		return DEFAULT;
 	}
 	public void gridAjax() throws Exception{
@@ -274,14 +281,15 @@ function deleteEditor(target,config){
 		var objArray = [];
 		objArray.push(config.data);
         effectRow["deleted"] = JSON.stringify(objArray);
-	   	var _config = {title:config.title == null ? '提示' : config.title,
-			  msg:config.msg == null ? '确定删除吗？' : config.msg,
-			  url:config.url == null ? '' : config.url,
+	   	var _config = {title:config.title === undefined ? '提示' : config.title,
+			  msg:config.msg === undefined ? '确定删除吗？' : config.msg,
+			  url:config.url === undefined ? '' : config.url,
 			  data:effectRow,
-			  rs:config.rs == null ? '删除' : config.rs,
-			  index:getRowIndex(target)		  
+			  rs:config.rs === undefined ? '删除' : config.rs,
+			  index:getRowIndex(target)
 	     };
-     deleteRow(_config);  
+    top.deleteRow($('#dg'),_config);
+    //$('#dg').datagrid('reload');
 }
 
 /*保存*/
@@ -306,7 +314,7 @@ function saveEditor(target,config){
 		  data:effectRow,
 		  rs:config.rs == null ? '提交' : config.rs
      };
-	operateDataGrid(_config);
+	top.operateDataGrid(_config);
 	}
 }
 

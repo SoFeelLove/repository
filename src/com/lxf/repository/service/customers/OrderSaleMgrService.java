@@ -237,5 +237,18 @@ public class OrderSaleMgrService extends BaseService{
 		return "true";
 	}
 	
+	public String returnOrdersProducts(String orderIds, String p_part_no) {
+		/**
+		 * 在订单表中删除
+		 */
+		deleteOrdersProducts(orderIds,p_part_no);
+		/**
+		 * 插入退单表
+		 */
+		String sql = this.getXmlSql("ordersMgr.xml","returnOrdersProducts").replace("${order_id}",orderIds).replace("${p_id}", p_part_no);
+		commonMapper.executeSql(sql);
+		return "true";
+	}
+	
 
 }

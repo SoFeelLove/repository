@@ -52,13 +52,13 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 				<property name="removeAbandonedTimeout" value="600" />
 				<property name="minEvictableIdleTimeMillis" value="30000" />
 				<property name="minIdle" value="1" />
-				<property name="logAbandoned" value="true" />
+				<property name="logAbandoned" value="true" /> 
 				<property name="removeAbandoned" value="true" />
 				<property name="jdbcInterceptors"
 					value="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer" />
 			</bean>
 		</property>
-	</bean> 
+	</bean>  
 
     <!-- jdbcTemplate -->
     <bean id="jdbcTemplate" name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">

@@ -16,12 +16,12 @@
 <link rel="stylesheet" type="text/css" href="themes/default/easyui.css" />
 <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="js/outlook2.js"></script>
 <script type="text/javascript" src="js/myJs.js"></script>
 <script type="text/javascript">
 	var _menus = {
 		"menus" : [
-				
 				{
 					"menuid" : "1",
 					"icon" : "icon-sys",
@@ -31,7 +31,6 @@
 						"menuname" : "查看客户",
 						"icon" : "icon-nav",
 						"url" : "${pageContext.request.contextPath}/customers/customersMgr!list.action"
-						
 					},
 					{
 						"menuid" : "12",
@@ -45,24 +44,21 @@
 				,{
 					"menuid" : "2",
 					"icon" : "icon-sys",
-					"menuname" : "进货管理",
+					"menuname" : "订单管理",
 					"menus" : [
 							{
-								"menuid" : "22",
-								"menuname" : "查看进货单",
+								"menuid" : "21",
+								"menuname" : "进货管理",
 								"icon" : "icon-nav",
 								"url" : "${pageContext.request.contextPath}/customers/ordersMgr!list.action"
-							}]
-				}, {
-					"menuid" : "3",
-					"icon" : "icon-sys",
-					"menuname" : "出货管理",
-					"menus" : [ {
-						"menuid" : "31",
-						"menuname" : "查看出货单",
-						"icon" : "icon-nav",
-						"url" : "${pageContext.request.contextPath}/customers/orderSaleMgr!list.action"
-					}]
+							},
+							{
+								"menuid" : "22",
+								"menuname" : "售货管理",
+								"icon" : "icon-nav",
+								"url" : "${pageContext.request.contextPath}/customers/orderSaleMgr!list.action"
+							}
+							]
 				}
 				
 			]
@@ -140,10 +136,8 @@
 		})
 
 		$('#loginOut').click(function() {
-			$.messager.confirm('系统提示', '您确定要退出本次登录吗?', function(r) {
-				if (r) {
-					location.href = '../user/loginMgr!loginOut.action';
-				}
+			showConfirm('系统提示', '您确定要退出本次登录吗?', function() {
+				location.href = '../user/loginMgr!loginOut.action';
 			});
 		})
 	});
@@ -163,17 +157,14 @@
 	height: 38px;
 	line-height: 38px;
 }
+.panel{
+text-align: left;
+}
 </style>
 
 </head>
 <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
-	<noscript>
-		<div
-			style=" position:absolute; z-index:100000; height:2046px;top:0px;left:0px; width:100%; background:white; text-align:center;">
-			<img src="images/noscript.gif" alt='抱歉，请开启脚本支持！' />
-		</div>
-	</noscript>
-	<div region="north" split="true" border="false"
+	<div region="north" split="false" border="false"
 		style="overflow: hidden; height: 64px;
         background: url(images/top-right.gif);
         line-height: 38px;color: #fff; font-family: Arial, Helvetica, sans-serif">        
@@ -184,12 +175,12 @@
 		<span id="current_time" style="float:right;padding-right:20px;" class="head"></span>
 		<span style="float:left"><img src="images/logo.gif"></span>
 	</div>
-	<div region="south" split="true"
-		style="height: 30px; background: #D2E0F2; ">
-		<div class="footer">Copyright © 2015-**** 625456668@qq.com
+	<div region="south" split="false"
+		style="height: 40px; background: url(images/footer_bg.png)">
+		<div class="footer" style="font-size:12px;line-height: 38px;color: #fff; font-family: Arial, Helvetica, sans-serif">Copyright © 2015-**** 625456668@qq.com
 			版权所有，翻版必究</div>
 	</div>
-	<div region="west" hide="true" split="true" title="导航菜单"
+	<div region="west" hide="true" split="false" title="导航菜单"
 		style="width:180px;" id="west">
 		<div id="nav" class="easyui-accordion" fit="true" border="false">
 			<!--  导航内容 -->
@@ -200,7 +191,7 @@
 		style="background: #eee; overflow-y:hidden">
 		<div id="tabs" class="easyui-tabs" fit="true" border="false">
 			<div title="欢迎使用" style="padding:20px;overflow:hidden;">
-				<h1 style="font-size:24px;">欢迎使用仓库管理系统  1.0</h1>
+				<h1 style="font-size:24px;text-align: center">欢迎使用仓库管理系统  1.0</h1>
 				<div
 					style="align:left;margin: 1 auto; text-align: left;font-size: 14px;">
 					&nbsp;<img src="images/ts.gif" width="16" height="16" /> 提示：<br />
@@ -215,8 +206,8 @@
 			</div>
 		</div>
 	</div>
-	<div region="east" title="其他" split="true"
-		style="width:180px;overflow:hidden;">
+	<div region="east" title="其他" split="false"
+		style="width:180px;overflow:hidden;text-align: center">
 		<div class="easyui-calendar"></div>
 	</div>
 

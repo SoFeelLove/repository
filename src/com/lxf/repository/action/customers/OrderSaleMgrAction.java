@@ -135,7 +135,7 @@ public class OrderSaleMgrAction extends OrdersMgrActionBean{
         					+"return s+'    '+c;}"+
         				"else{ var e = '<a onclick=\"editrow(this);\">编辑</a>';"
         					+" var d = '<a onclick=\"deleterow(this);\">删除</a>';"
-        					+ "return e +'    '+ d; }}}";
+        					+ "return e; }}}";
         this.formatEasyuiFields(true, filedTitle, colsTable, isShow, frozen, isFiledSort,isFormatColumn, isStylerColumn,isEditor,isRequired,editorType, widths, aligns);// 如果第二个参数为null，默认为全排序
 		return DEFAULT;
 	}
@@ -159,6 +159,12 @@ public class OrderSaleMgrAction extends OrdersMgrActionBean{
 	public void deleteOrdersProducts(){
 		orderSaleMgrService.deleteOrdersProducts(orderIds,p_part_no);
 	}
-	
+	/**
+	 * 退单
+	 * @author lxf
+	 */
+	public void returnOrdersProducts(){
+		orderSaleMgrService.returnOrdersProducts(orderIds,p_part_no);
+	}
 
 }
