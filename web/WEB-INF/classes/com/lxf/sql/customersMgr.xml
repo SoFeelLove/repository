@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<content id="getCustomersByName" note="得到所有客户">
+		<![CDATA[
+			select c.customer_id cid,
+			c.customer_name cname,
+			c.customer_contact contact,
+			c.customer_tel tel,
+			c.customer_address address, 
+			c.customer_other other,
+			c.state,
+			c.customer_type,
+			date_format(c.customer_addtime,'%Y-%m-%d %H:%i:%S') addtime 
+			from t_customers c 
+			where c.state = 1
+			${qWhere}
+		]]>
+	</content>	
+	
+	<content id="getAllCustomers" note="得到所有客户">
+		<![CDATA[
+			select c.customer_id c_id,
+			c.customer_name cname,
+			c.customer_contact contact,
+			c.customer_tel tel,
+			c.customer_address address, 
+			c.customer_other other,
+			c.state,
+			c.customer_type,
+			date_format(c.customer_addtime,'%Y-%m-%d %H:%i:%S') addtime 
+			from t_customers c 
+			where c.state = 1
+		]]>
+	</content>	
+	
+	<content id="getCustomersByCustomerName" note="getCustomersByName">
+		<![CDATA[
+			select c.customer_id cid,
+			c.customer_name cname,
+			c.customer_contact contact,
+			c.customer_tel tel,
+			c.customer_address address, 
+			c.customer_other other,
+			c.state,
+			c.customer_type,
+			date_format(c.customer_addtime,'%Y-%m-%d %H:%i:%S') addtime 
+			from t_customers c 
+			where c.state = 1
+			and c.customer_name = '${customer_name}'
+		]]>
+	</content>	
+	
+	<content id="updateCustomerByName" note="updateCustomerByName">
+		<![CDATA[
+			update t_customers c
+			set 
+			c.customer_name = '${customer_name}', 			
+			c.customer_contact = '${customer_contact}',
+			c.customer_tel = '${customer_tel}',
+			c.customer_address = '${customer_address}', 
+			c.customer_other = '${customer_other}'		
+			where c.customer_id = ${c_id}
+		]]>
+	</content>	
+	<content id="deleteCustomer" note="deleteCustomer">
+		<![CDATA[
+			update t_customers c
+			set 
+			c.state = 0 			
+			where c.customer_id in (${c_id})
+		]]>
+	</content>	
+	<content id="insertCustomer" note="insertCustomer">
+		<![CDATA[
+			insert into t_customers
+			(customer_name,customer_contact,customer_tel,customer_address,customer_other,customer_addtime)
+			values(
+			'${customer_name}',
+			'${customer_contact}','${customer_tel}',
+			'${customer_address}','${customer_other}',
+			now())
+		]]>
+	</content>	
+	<content id="insertSupplier" note="插入supplier">
+		<![CDATA[
+			insert into suppliers(s_name,s_contact,s_tel,s_address,s_other,s_addtime) 
+				values('${s_name}','${s_contact}','${s_tel}','${s_address}','${s_other}',now()) 
+		]]>
+	</content>	
+</root>
